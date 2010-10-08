@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby -wKU
 
+# http://projecteuler.net/index.php?section=problems&id=22
+
 scores = { }
 ('A' .. 'Z').zip( 1..26) {|a,b| scores[a] = b }
 total = 0
