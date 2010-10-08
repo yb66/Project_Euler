@@ -22,3 +22,9 @@ def summer( m ) #this accepts a string
 end
 
 puts summer fac( n ).to_s
+
+#alternative, in 3 lines :)
+total = 0
+(1..n).inject(1, :*).to_s.each_char{|c| total += c.to_i }
+
+puts total
