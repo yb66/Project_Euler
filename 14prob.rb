@@ -1,11 +1,13 @@
 #!/usr/bin/env ruby -wKU
 
+#http://projecteuler.net/index.php?section=problems&id=14
+
 #add fold to the available method names
 module Enumerable
   alias :fold inject unless Enumerable.method_defined? :fold
 end
 
-def collatz( n=1, c=0 )
+def collatz( n=1, c=0 ) # n is number, c is chain length
   c += 1
   # puts "n: #{n} c: #{c}"
   unless n == 1
@@ -17,11 +19,11 @@ end
   
   
 i = 1000000
-c = 0
+c = 0 # current longest chain length
 t1 = Time.now
 while i > 0
-  j = collatz i
-  if j > c
+  j = collatz i #get chain length for i
+  if j > c      # if the new number is greater than c then replace it
     c = j
     puts "c: #{c} #{i}"
   end
