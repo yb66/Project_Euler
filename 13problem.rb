@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby -wKU
 
+#Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+
 #add fold to the available method names
 module Enumerable
   alias :fold inject unless Enumerable.method_defined? :fold
