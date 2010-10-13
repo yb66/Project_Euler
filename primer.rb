@@ -9,37 +9,34 @@ class Integer
   end
 end
 
-module Euler
 
+class Primer
 
-  class Prime
+  class << self
   
-    class << self
-    
-      def ld( n )
-        ldf 2, n
+    def ld( n )
+      ldf 2, n
+    end
+  
+    def ldf( k, n )
+      if n.divides_by? k
+        k
+      elsif k**2 >= n
+        n
+      else
+        ldf k+1, n
       end
-    
-      def ldf( k, n )
-        if n.divides_by? k
-          k
-        elsif k**2 > n
-          n
-        else
-          ldf k+1, n
-        end
-      end
-      
-      def prime? n
-        ld( n ) == n ? true : false
-      end
-      
     end
     
-
+    def prime? n
+      return false if n <= 1
+      ld( n ) == n ? true : false
+    end
     
-  end #class
+  end
+  
 
   
-end #module
+end #class
+
 
