@@ -1,7 +1,4 @@
-$:.unshift File.expand_path("#{File.dirname(__FILE__)}")
-
-require 'primer.rb'
-require 'lazylist'
+require 'prime'
 
 
 # The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
@@ -11,14 +8,10 @@ require 'lazylist'
 
 t1 = Time.now
 
-i = 0
-total = 2
-3.upto( 1_999_999 ) do |i|
+total = 0
+Prime.each( 1_999_999 ) do |p|
   
-  next if i % 2 == 0 # get rid of evens
-  next unless Primer.prime? i
-  
-  total += i
+  total += p
 end
 
 puts "total: #{total}"
