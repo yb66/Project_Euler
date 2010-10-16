@@ -7,7 +7,6 @@
 require 'prime' #builtin generator
 
 def rotate( x )
-  return true if x.length == 1 # already a prime, no rotations
   (x.length - 1).times do #first number is prime, so skip
     x = x[1..-1] + x[0]
     return false unless x.to_i.prime? #rotation fails
@@ -21,8 +20,10 @@ total = 0
 t1 = Time.now
 
 Prime.each(1_000_000 - 1) do |p|
-  
-  next unless rotate( p.to_s )
+
+  unless p <= 9
+    next unless rotate( p.to_s )
+  end
   total += 1
    
 end
