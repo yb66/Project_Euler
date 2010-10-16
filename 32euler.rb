@@ -25,7 +25,13 @@ class Array
   alias :perm permutation #for brevity
   alias :combi combination
   def to_i # convert an array of integers to an integer, [1,2,3,4] => 1234
-    self.fold(0){|sum,x| sum += x * 10**(self.length - self.index(x) - 1) }
+    sum,mag = 0,0
+    self.reverse_each do |x|
+      sum += x * 10**mag
+      mag += 1
+    end
+    
+    sum
   end
 end
 
