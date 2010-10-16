@@ -6,22 +6,25 @@
 
 require 'prime' #builtin generator
 
-class String
-  def String.rotate( x, len=nil, xs=[] )
-    len ||= x.length #first time through, set termination
-    xs << x.to_i
-    return [x.to_i] if len <= 1 #termination clause
-    rotate( x[-1] + x[0..(x.length - 2)], len - 1, xs )
-    return xs.uniq
+def rotate( x )
+  return true if x.length == 1 # already a prime, no rotations
+  (x.length - 1).times do #first number is prime, so skip
+    x = x[1..-1] + x[0]
+    return false unless x.to_i.prime? #rotation fails
   end
+  true
 end
+
 
 
 total = 0
 t1 = Time.now
 
-Prime.each(1_000_000) do |p|
-  total += 1 if String.rotate( p.to_s ).all? { |pr| pr.prime? }
+Prime.each(1_000_000 - 1) do |p|
+  
+  next unless rotate( p.to_s )
+  total += 1
+   
 end
 
 t_end = Time.now - t1
