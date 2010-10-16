@@ -18,14 +18,11 @@ end
 
 
 total = 0
+t1 = Time.now
 
-Prime.each(100) do |p|
-
+Prime.each(1_000_000) do |p|
   total += 1 if String.rotate( p.to_s ).all? { |pr| pr.prime? }
-
 end
 
-
-
-
-puts "total: #{total}"
+t_end = Time.now - t1
+puts "total: #{total} time: #{t_end}"
