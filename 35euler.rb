@@ -49,6 +49,9 @@ end
 #all combinations
 digits = (1..9).to_a
 
+cs = digits.combi(1).to_a + digits.combi(2).to_a + [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9]] #+ digits.combi(3).to_a + digits.combi(4).to_a + digits.combi(5).to_a + digits.combi(6).to_a
+
+
 total = 0
 cs.each do |c|
   if c.to_i.prime?
